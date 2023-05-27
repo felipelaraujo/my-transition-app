@@ -1,19 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Container, Title } from './styles'
 
 export const SignIn = () => {
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
-    </View>
+    <Container>
+      <Title>SignIn</Title>
+    </Container>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

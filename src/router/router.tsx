@@ -1,14 +1,17 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { SignIn } from '../screens/SignIn'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../screens/Home'
+import { SignIn } from '../screens/SignIn'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
 
 const HomeTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+    >
       <Tab.Screen name="Home" component={Home} />
     </Tab.Navigator>
   )
