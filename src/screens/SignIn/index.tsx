@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Title } from './styles'
+import { BlueTitle, Container, PinkTitle } from './styles'
 
 export const SignIn = () => {
   return (
     <Container>
-      <Title>SignIn</Title>
+      <BlueTitle>Minha</BlueTitle>
+      <PinkTitle>Transição</PinkTitle>
     </Container>
   )
 }
