@@ -1,7 +1,5 @@
+import { RFValue } from 'react-native-responsive-fontsize'
 import styled from 'styled-components/native'
-import { RNResponsive } from '../../styles/RNResponsive'
-
-const { fontSizeToDP } = RNResponsive
 
 export const Container = styled.View`
   flex: 1;
@@ -11,6 +9,6 @@ export const Container = styled.View`
 `
 
 export const Title = styled.Text`
-  font-size: ${fontSizeToDP(20)}px;
+  font-size: ${RFValue(20)}px;
   color: black;
 `
