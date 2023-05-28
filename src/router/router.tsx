@@ -21,7 +21,12 @@ export const Router = () => {
   return (
     <Stack.Navigator
       initialRouteName="SignIn"
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,
+        statusBarTranslucent: true,
+        statusBarColor: 'transparent',
+        statusBarStyle: 'light',
+      }}
     >
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="HomeTabs" component={HomeTabs} />

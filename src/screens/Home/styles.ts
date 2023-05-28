@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import { RNResponsive } from '../../config/RNResponsive'
+import { RNResponsive } from '../../styles/RNResponsive'
 
 const { fontSizeToDP } = RNResponsive
 

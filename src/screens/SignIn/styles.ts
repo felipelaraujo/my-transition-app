@@ -1,23 +1,23 @@
 import styled from 'styled-components/native'
-import { RNResponsive } from '../../config/RNResponsive'
+import { RNResponsive } from '../../styles/RNResponsive'
 
 const { fontSizeToDP } = RNResponsive
 
 export const Container = styled.View`
   flex: 1;
-  background-color: #18181b;
+  background-color: ${({ theme }) => theme.colors.background};
   align-items: center;
   justify-content: center;
 `
 
 export const BlueTitle = styled.Text`
-  font-family: 'Poppins_700Bold';
-  font-size: ${fontSizeToDP(20)}px;
-  color: #5bcefa;
+  font-family: ${({ theme }) => theme.fonts.alternative};
+  font-size: ${fontSizeToDP(28)}px;
+  color: ${({ theme }) => theme.colors.primary};
 `
 
 export const PinkTitle = styled.Text`
-  font-family: 'Poppins_700Bold';
-  font-size: ${fontSizeToDP(20)}px;
-  color: #f5a9b8;
+  font-family: ${({ theme }) => theme.fonts.alternative};
+  font-size: ${fontSizeToDP(28)}px;
+  color: ${({ theme }) => theme.colors.secondary};
 `
