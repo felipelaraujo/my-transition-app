@@ -6,7 +6,7 @@ export const Container = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.zinc950};
+  background-color: ${({ theme }) => theme.colors.zinc900};
 `
 
 export const LogoContainer = styled.View`
@@ -40,13 +40,13 @@ export const FormItemContainer = styled.View`
 
 export const ItemLabel = styled.Text`
   font-family: ${({ theme }) => theme.fonts.alternative};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.zinc100};
 `
 
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.zinc800};
 `
 
@@ -62,6 +62,6 @@ export const Button = styled.TouchableOpacity``
 
 export const PinkTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.secondary};
 `

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 export const Container = styled.View`
   width: ${RFValue(300)}px;
   padding: ${RFValue(10)}px;
-  background-color: ${({ theme }) => theme.colors.zinc900};
+  background-color: ${({ theme }) => theme.colors.zinc800};
   border-radius: ${RFValue(8)}px;
 `
 
