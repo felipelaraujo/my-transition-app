@@ -1,11 +1,16 @@
-import React from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { ScrollView, Text } from 'react-native'
+import { ActivityIndicator, ScrollView } from 'react-native'
 import { TextInputControl } from '../../components/TextInputControl'
+import { useAuth } from '../../context/AuthContext'
+import { AppTheme } from '../../styles/AppTheme'
+import { ValidationSchemas } from '../../utils/validation.schemas'
 import {
   BlueLogo,
   Button,
   Container,
+  ErrorText,
   FormContainer,
   FormItemContainer,
   ItemLabel,
@@ -16,19 +21,29 @@ import {
   Title,
 } from './styles'
 
+interface ISignInForm {
+  email: string
+  password: string
+}
+
 export const SignIn = () => {
+  const [isLoading, setLoading] = useState(false)
+  const { onSignIn } = useAuth()
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
+  } = useForm<ISignInForm>({
+    resolver: yupResolver(ValidationSchemas.signIn),
   })
 
-  const onSubmit = (data: any) => console.log(data)
+  const onSubmit = async (data: ISignInForm) => {
+    setLoading(true)
+
+    onSignIn(data)
+
+    setLoading(false)
+  }
 
   return (
     <ScrollView
@@ -50,7 +65,7 @@ export const SignIn = () => {
               placeholder="Insira seu e-mail"
               keyboardType="email-address"
             />
-            {errors.email && <Text>This is required.</Text>}
+            {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
           </FormItemContainer>
 
           <FormItemContainer>
@@ -61,12 +76,18 @@ export const SignIn = () => {
               placeholder="Insira sua senha"
               secureTextEntry={true}
             />
-            {errors.password && <Text>This is required.</Text>}
+            {errors.password && (
+              <ErrorText>{errors.password.message}</ErrorText>
+            )}
           </FormItemContainer>
 
           <FormItemContainer>
-            <SubmitButton onPress={handleSubmit(onSubmit)}>
-              <Title>Login</Title>
+            <SubmitButton disabled={isLoading} onPress={handleSubmit(onSubmit)}>
+              {isLoading ? (
+                <ActivityIndicator color={AppTheme.colors.zinc500} />
+              ) : (
+                <Title>Login</Title>
+              )}
             </SubmitButton>
           </FormItemContainer>
 

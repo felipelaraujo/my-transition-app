@@ -1,7 +1,11 @@
 export const AppTheme = {
   colors: {
+    // trans colors
     primary: '#5bcefa',
     secondary: '#f5a9b8',
+    // semantic colors
+    danger: '#ef4444',
+    // app palette
     zinc100: '#f4f4f5',
     zinc200: '#e4e4e7',
     zinc300: '#d4d4d8',

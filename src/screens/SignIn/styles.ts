@@ -65,3 +65,10 @@ export const PinkTitle = styled.Text`
   font-size: ${RFValue(14)}px;
   color: ${({ theme }) => theme.colors.secondary};
 `
+
+export const ErrorText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.bold};
+  font-size: ${RFValue(12)}px;
+  color: ${({ theme }) => theme.colors.danger};
+  margin-top: ${RFValue(5)}px;
+`
