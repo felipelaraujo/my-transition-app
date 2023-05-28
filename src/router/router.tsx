@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { AuthProvider } from '../context/AuthContext'
 import { Home } from '../screens/Home'
 import { SignIn } from '../screens/SignIn'
 
@@ -19,17 +20,19 @@ const HomeTabs = () => {
 
 export const Router = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="SignIn"
-      screenOptions={{
-        headerShown: false,
-        statusBarTranslucent: true,
-        statusBarColor: 'transparent',
-        statusBarStyle: 'light',
-      }}
-    >
-      <Stack.Screen name="SignIn" component={SignIn} />
-      <Stack.Screen name="HomeTabs" component={HomeTabs} />
-    </Stack.Navigator>
+    <AuthProvider>
+      <Stack.Navigator
+        initialRouteName="SignIn"
+        screenOptions={{
+          headerShown: false,
+          statusBarTranslucent: true,
+          statusBarColor: 'transparent',
+          statusBarStyle: 'light',
+        }}
+      >
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="HomeTabs" component={HomeTabs} />
+      </Stack.Navigator>
+    </AuthProvider>
   )
 }
