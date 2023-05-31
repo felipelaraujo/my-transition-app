@@ -55,7 +55,7 @@ export const SignInForm = ({ navigation }: SignInFormProps) => {
         Alert.alert(error.message)
       })
       .finally(() => {
-        navigate('HomeTabs')
+        navigate('Home')
       })
   }
 

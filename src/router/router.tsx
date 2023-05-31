@@ -1,5 +1,6 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { useEffect, useState } from 'react'
 import { AuthProvider } from '../context/AuthContext'
 import { ForgotPassword } from '../screens/ForgotPassword'
 import { Home } from '../screens/Home'
@@ -8,45 +9,38 @@ import { SignIn } from '../screens/SignIn'
 export type StackParamList = {
   SignIn: undefined
   ForgotPassword: { previousEmail?: string }
-  HomeTabs: undefined
-}
-
-export type BottomTabParamList = {
   Home: undefined
 }
 
 const Stack = createNativeStackNavigator<StackParamList>()
-const Tab = createBottomTabNavigator<BottomTabParamList>()
-
-const HomeTabs = () => {
-  return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Tab.Screen name="Home" component={Home} />
-    </Tab.Navigator>
-  )
-}
 
 export const Router = () => {
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null)
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(setUser)
+
+    return subscriber
+  }, [])
+
   return (
     <AuthProvider>
       <Stack.Navigator
-        initialRouteName="SignIn"
         screenOptions={{
           headerShown: false,
-          statusBarTranslucent: true,
-          statusBarColor: 'transparent',
+          statusBarTranslucent: false,
+          statusBarColor: 'black',
           statusBarStyle: 'light',
         }}
       >
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-
-        <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        {user ? (
+          <Stack.Screen name="Home" component={Home} />
+        ) : (
+          <>
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+          </>
+        )}
       </Stack.Navigator>
     </AuthProvider>
   )
